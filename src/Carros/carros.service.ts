@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { CarroDTOCreate } from "./CarrosDTO/carro.dto.create.js";
 import { CarroDTOUpdate } from "./CarrosDTO/carro.dto.update.js";
-import { isEqual } from "lodash";
+import isEqual from "lodash.isequal"
 
 // Aqui se hace toda la logica
 
@@ -71,7 +71,7 @@ export class CarrosService{
     }
 
     //PUT (update)
-    updateCarro(CarroDTOCreate: CarroDTOCreate): ServerResponse {
+    updateCarro(id: string, CarroDTOCreate: CarroDTOCreate): ServerResponse {
         const items: Array<Carro> = this.items;
         const idx: number = this.items.findIndex(item => {
             return item.id == CarroDTOCreate.id;

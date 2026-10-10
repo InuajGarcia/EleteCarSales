@@ -1,6 +1,6 @@
 //Contenido valores QUE SE PUEDEN CAMBIAR
 export class CarroDTOCreate{
-    id: string;
+    id?: string;
     nombre: string
     precio: number
     imagen: string

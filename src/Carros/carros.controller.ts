@@ -3,7 +3,6 @@ import { CarrosService } from "./carros.service.js";
 import type { ServerResponse } from "./carros.service.js";
 import { CarroDTOCreate } from "./CarrosDTO/carro.dto.create.js";
 import { CarroDTOUpdate } from "./CarrosDTO/carro.dto.update.js";
-import { identity } from "lodash";
 
 @Controller('carros')
 export class CarrosController {
@@ -14,7 +13,7 @@ export class CarrosController {
     //Definir el crud
 
     //Ver
-    @Get()
+    @Get(':id')
     getCatalogo() {
         return this.CarroService.getCatalogo();
     }
@@ -33,7 +32,7 @@ export class CarrosController {
     //Actualizar
     @Put(':id')
     updateCarro(@Param('id') id: string, @Body() CarroDTOUpdate: CarroDTOUpdate): ServerResponse{
-        return this.CarroService.updateCarro(CarroDTOUpdate)
+        return this.CarroService.updateCarro(id, CarroDTOUpdate)
     }
 
 

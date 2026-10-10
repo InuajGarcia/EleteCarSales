@@ -11,8 +11,4 @@ export class SobreNosotrosController {
         return this.SobreNosotrosService.getSobreNosotros();
     }
 
-    @Delete(': id')
-    deleteCarro(@Param('id') id: string): ServerResponse {
-        
-    }
 }
