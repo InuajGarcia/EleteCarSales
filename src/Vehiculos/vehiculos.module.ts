@@ -8,4 +8,4 @@ import { ModuleCompiler } from "@nestjs/core/injector/compiler.js";
     providers: [CarrosService]
 })
 
-export class CarroModule{}
+export class VehiculoModule{}
