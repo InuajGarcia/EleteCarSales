@@ -1,4 +1,7 @@
 import { Injectable } from "@nestjs/common";
+import { CarroDTOCreate } from "./CarrosDTO/carro.dto.create.js";
+import { CarroDTOUpdate } from "./CarrosDTO/carro.dto.update.js";
+import { isEqual } from "lodash";
 
 // Aqui se hace toda la logica
 
@@ -53,6 +56,38 @@ export class CarrosService{
 
     }
 
+    //POST
+    createCarro(CarroDTOCreate : CarroDTOCreate): ServerResponse { //Que el crear carro usa los objetos de CarroDTO y ServerResponse
+        const len: number = this.items.length;
+        const newID: string = `${len+1}`;
+        this.items.push({id: newID, ... CarroDTOCreate});
+
+        //Respuestas
+        const status: number = this.items.length > len ? 200 : 500;
+        const message: string = status == 200 ?
+                                "Carro creado exitosamente!":
+                                "Error inesperado..."
+        return {data: this.items, message, status}
+    }
+
+    //PUT (update)
+    updateCarro(CarroDTOCreate: CarroDTOCreate): ServerResponse {
+        const items: Array<Carro> = this.items;
+        const idx: number = this.items.findIndex(item => {
+            return item.id == CarroDTOCreate.id;
+        })
+        this.items[idx] = {... this.items[idx], ... CarroDTOCreate};
+
+        //Respuesta
+        const status: number = !isEqual(items, this.items) ? 200 : 500;
+        const message: string = status == 200 ?
+                                "Carro actualizado exitosamente":
+                                "Error inesperado..."
+        return {data: this.items, message, status}
+    }
+
+
+
      //DELETE
     deleteCarro(id: string): ServerResponse {
         const len: number = this.items.length;
@@ -70,3 +105,5 @@ export class CarrosService{
     }
 
 }
+
+//Los apuntes son tambien para yo anotar segun yo anoto :P
