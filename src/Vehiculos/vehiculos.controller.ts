@@ -1,8 +1,8 @@
 import { Controller, Get, Param, Delete, Post , Body, Put} from "@nestjs/common";
-import { CarrosService } from "./carros.service.js";
-import type { ServerResponse } from "./carros.service.js";
-import { CarroDTOCreate } from "./CarrosDTO/carro.dto.create.js";
-import { CarroDTOUpdate } from "./CarrosDTO/carro.dto.update.js";
+import { CarrosService } from "./vehiculos.service.js";
+import type { ServerResponse } from "./vehiculos.service.js";
+import { CarroDTOCreate } from "./dto/create-vehiculo.dto.js";
+import { CarroDTOUpdate } from "./dto/update-vehiculo.dto.js";
 
 @Controller('carros')
 export class CarrosController {

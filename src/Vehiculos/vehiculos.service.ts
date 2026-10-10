@@ -1,18 +1,26 @@
 import { Injectable } from "@nestjs/common";
-import { CarroDTOCreate } from "./CarrosDTO/carro.dto.create.js";
-import { CarroDTOUpdate } from "./CarrosDTO/carro.dto.update.js";
+import { CarroDTOCreate } from "./dto/create-vehiculo.dto.js";
+import { CarroDTOUpdate } from "./dto/update-vehiculo.dto.js";
 import isEqual from "lodash.isequal"
 
 // Aqui se hace toda la logica
 
 //Componentes de Carro
 export interface Carro{
-    id?: string
-    nombre?: string
-    precio?: number
-    imagen?: string
-    foto?: string
-    informacionAdicional?: string
+    id?: string;
+    marca?: string;
+    modelo?: string;
+    año?: number;
+    moneda?: string;
+    kilometraje?: string;
+    categoria?: string;
+    color?: string;
+    descripcion?: string;
+    imagen?: string;
+    disponible?: boolean;
+    destacado?: boolean;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 //Estructura de la respuesta del servidor (Devuelve Mensaje, status y ect)
