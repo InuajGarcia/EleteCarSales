@@ -56,8 +56,8 @@ export class CarrosService{
         });
 
         //Respuesta
-        const status: number = carro != undefined ? 202: 400;
-        const message: string = status == 200 ?
+        const status: number = carro != undefined ? 202: 404;   
+        const message: string = status == 202 ?
                                         "Carro encontrado correctamente!":
                                         "No se encontro el item" 
         return {data: carro ?? [], message, status}

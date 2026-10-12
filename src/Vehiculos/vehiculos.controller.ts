@@ -13,11 +13,12 @@ export class CarrosController {
     //Se determinan las acciones del CRUD
 
     //Ver
-    @Get(':id')
+    @Get()
     getCatalogo() {
         return this.CarroService.getCatalogo();
     }
 
+    @Get(':id')
     getCarro(@Param("id") id:string) {
         return this.CarroService.getCarro(id);
     }
