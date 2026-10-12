@@ -3,7 +3,7 @@ import { CarroDTOCreate } from "./dto/create-vehiculo.dto.js";
 import { CarroDTOUpdate } from "./dto/update-vehiculo.dto.js";
 import isEqual from "lodash.isequal"
 
-// Aqui se hace toda la logica
+// Logica de transferencia de datos
 
 //Componentes de Carro
 export interface Carro{
@@ -79,12 +79,12 @@ export class CarrosService{
     }
 
     //PUT (update)
-    updateCarro(id: string, CarroDTOCreate: CarroDTOCreate): ServerResponse {
+    updateCarro(id: string, CarroDTOUpdate: CarroDTOUpdate): ServerResponse {
         const items: Array<Carro> = this.items;
         const idx: number = this.items.findIndex(item => {
-            return item.id == CarroDTOCreate.id;
+            return item.id == CarroDTOUpdate.id;
         })
-        this.items[idx] = {... this.items[idx], ... CarroDTOCreate};
+        this.items[idx] = {... this.items[idx], ... CarroDTOUpdate};
 
         //Respuesta
         const status: number = !isEqual(items, this.items) ? 200 : 500;

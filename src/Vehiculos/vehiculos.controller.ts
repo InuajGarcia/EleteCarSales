@@ -4,13 +4,13 @@ import type { ServerResponse } from "./vehiculos.service.js";
 import { CarroDTOCreate } from "./dto/create-vehiculo.dto.js";
 import { CarroDTOUpdate } from "./dto/update-vehiculo.dto.js";
 
-@Controller('carros')
+@Controller('vehiculos')
 export class CarrosController {
 
     constructor(private readonly CarroService: CarrosService) {}
 
 
-    //Definir el crud
+    //Se determinan las acciones del CRUD
 
     //Ver
     @Get(':id')
@@ -25,7 +25,7 @@ export class CarrosController {
 
     //Crear
     @Post()
-    createCarro(@Body() CarroDTOCreate : CarroDTOUpdate): ServerResponse{
+    createCarro(@Body() CarroDTOCreate : CarroDTOCreate): ServerResponse{
         return this.CarroService.createCarro(CarroDTOCreate)
     }
 
