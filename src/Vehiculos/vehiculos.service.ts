@@ -79,12 +79,12 @@ export class CarrosService{
     }
 
     //PUT (update)
-    updateCarro(id: string, CarroDTOCreate: CarroDTOCreate): ServerResponse {
+    updateCarro(id: string, CarroDTOUpdate: CarroDTOUpdate): ServerResponse {
         const items: Array<Carro> = this.items;
         const idx: number = this.items.findIndex(item => {
-            return item.id == CarroDTOCreate.id;
+            return item.id == CarroDTOUpdate.id;
         })
-        this.items[idx] = {... this.items[idx], ... CarroDTOCreate};
+        this.items[idx] = {... this.items[idx], ... CarroDTOUpdate};
 
         //Respuesta
         const status: number = !isEqual(items, this.items) ? 200 : 500;
